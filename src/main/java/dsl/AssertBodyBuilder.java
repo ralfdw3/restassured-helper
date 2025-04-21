@@ -42,32 +42,32 @@ public class AssertBodyBuilder {
         return new AssertBodyBuilder(lista, posicao, campoFilho, tag);
     }
 
-    public AssertBodyBuilder essaDescricao(final String campoString) {
+    public AssertBodyBuilder aDescricao(final String campoString) {
         this.campoString = campoString;
         return this;
     }
 
-    public AssertBodyBuilder esseInteiro(final Integer campoInteiro) {
+    public AssertBodyBuilder oInteiro(final Integer campoInteiro) {
         this.campoInteiro = campoInteiro;
         return this;
     }
 
-    public AssertBodyBuilder esseLong(final Long campoLong) {
+    public AssertBodyBuilder oLong(final Long campoLong) {
         this.campoLong = campoLong;
         return this;
     }
 
-    public AssertBodyBuilder esseDouble(final Double campoDouble) {
+    public AssertBodyBuilder oDouble(final Double campoDouble) {
         this.campoDouble = campoDouble;
         return this;
     }
 
-    public AssertBodyBuilder esseFloat(final Float campoFloat) {
+    public AssertBodyBuilder oFloat(final Float campoFloat) {
         this.campoFloat = campoFloat;
         return this;
     }
 
-    public AssertBodyBuilder esseBoolean(final Boolean campoBoolean) {
+    public AssertBodyBuilder oBoolean(final Boolean campoBoolean) {
         this.campoBoolean = campoBoolean;
         return this;
     }
