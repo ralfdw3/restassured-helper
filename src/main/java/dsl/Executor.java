@@ -2,7 +2,6 @@ package dsl;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.Map;
@@ -11,24 +10,32 @@ import static io.restassured.RestAssured.given;
 import static java.util.Objects.isNull;
 
 public class Executor {
-    private final Response resposta;
 
-    public Executor(final Requisicao requisicao) {
-        this.resposta = given()
+    public static AssercoesRequisicao realizandoPost(final Requisicao requisicao) {
+        return new AssercoesRequisicao(given()
                 .spec(definirHeaders(requisicao))
                 .contentType(ContentType.JSON)
                 .body(requisicao.body())
                 .when()
-                .post(requisicao.path());
+                .post(requisicao.path()));
     }
 
-    private RequestSpecification definirHeaders(final Requisicao requisicao) {
-        Map<String, String> headers = requisicao.headers();
+    public static AssercoesRequisicao realizandoGet(final Requisicao requisicao) {
+        return new AssercoesRequisicao(given()
+                .spec(definirHeaders(requisicao))
+                .contentType(ContentType.JSON)
+                .body(requisicao.body())
+                .when()
+                .get(requisicao.path()));
+    }
+
+    private static RequestSpecification definirHeaders(final Requisicao requisicao) {
+        final Map<String, String> headers = requisicao.headers();
 
         return isNull(headers) || headers.isEmpty() ? requestSpecificationDefault() : construirHeaders(headers);
     }
 
-    private RequestSpecification requestSpecificationDefault() {
+    private static RequestSpecification requestSpecificationDefault() {
         return RestAssured
                 .given()
                 .headers("identidade", "consumidor_teste",
@@ -39,13 +46,5 @@ public class Executor {
         return RestAssured
                 .given()
                 .headers(headers);
-    }
-
-    public static Executor realizandoPost(final Requisicao requisicao) {
-        return new Executor(requisicao);
-    }
-
-    public AssercoesRequisicao esperoRetorno() {
-        return new AssercoesRequisicao(resposta);
     }
 }
