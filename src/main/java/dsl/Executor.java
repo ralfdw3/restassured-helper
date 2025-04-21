@@ -10,10 +10,10 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static java.util.Objects.isNull;
 
-public class ExecutorRequisicoes {
+public class Executor {
     private final Response resposta;
 
-    public ExecutorRequisicoes(final Requisicao requisicao) {
+    public Executor(final Requisicao requisicao) {
         this.resposta = given()
                 .spec(definirHeaders(requisicao))
                 .contentType(ContentType.JSON)
@@ -41,8 +41,8 @@ public class ExecutorRequisicoes {
                 .headers(headers);
     }
 
-    public static ExecutorRequisicoes realizandoPost(final Requisicao requisicao) {
-        return new ExecutorRequisicoes(requisicao);
+    public static Executor realizandoPost(final Requisicao requisicao) {
+        return new Executor(requisicao);
     }
 
     public AssercoesRequisicao esperoRetorno() {

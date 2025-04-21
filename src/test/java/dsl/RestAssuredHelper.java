@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static dsl.AssertBodyBuilder.*;
-import static dsl.ExecutorRequisicoes.realizandoPost;
+import static dsl.Executor.realizandoPost;
 import static dsl.RequisicaoBuilder.paraPath;
 
 @WireMockTest(httpPort = 8080)
