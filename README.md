@@ -16,9 +16,8 @@ This library allows developers to write fluent and concise REST API assertions u
 ```java
 realizandoPost(paraPath(WHATEVER_URL)
     .comEntrada("whatever"))
-    .esperoRetorno()
     .comStatus(200)
     .contem("preferencias.notificacoes[0]", Matchers.equalTo("email"))
-    .contemNaString(noCampo("nome").essaDescricao("Ralf Drehmer"))
-    .contemIntegerExato(noCampo("idade").esseInteiro(29))
-    .contemBoolean(noCampo("ativo").esseBoolean(true));
+    .contemNaString(noCampo("nome").aDescricao("Ralf Drehmer"))
+    .contemIntegerExato(noCampo("idade").oInteiro(29))
+    .contemBoolean(noCampo("ativo").oBoolean(true));
